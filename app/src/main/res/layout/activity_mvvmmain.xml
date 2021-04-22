@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="handlers"
+            type="com.mvx.mvxdemo.mvvm.MyHandlers" />
+
+        <variable
+            name="GeneratorObj"
+            type="com.mvx.mvxdemo.mvvm.GeneratorObj" />
+    </data>
+    <!-- @｛｝语句来将GeneratorObj的baseText属性以及 getBaseText()方法和TextView进行绑定 -->
+    <!-- 对于原先的Button按钮通过@{handlers.onClickHello}进行事件绑定前置操作。
+    对于原先的Textview通过@{greetingGeneratorObj.baseText} 进行数据绑定前置操作。 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/greetingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{GeneratorObj.baseText}" />
+
+        <Button
+            android:id="@+id/helloButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{handlers::onClickHello}"
+            android:text="hello" />
+
+        <Button
+            android:id="@+id/goodbyeButtonClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{handlers::onClickGoodbye}"
+            android:text="Good bye" />
+    </LinearLayout>
+</layout>
